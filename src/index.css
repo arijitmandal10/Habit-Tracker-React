@@ -1,13 +1,137 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+nav {
+	border: 1px solid;
+	padding: 3px 30px;
+	margin: 0px;
+	display: flex;
+	justify-content: space-between;
+	background: antiquewhite;
+	border-top: none;
+}
+nav > a > button {
+	border: none;
+	background: greenyellow;
+	padding: 22px;
+	border-radius: 39px;
+	font-size: larger;
+	height: 70px;
+}
+
+nav a {
+	text-decoration: none;
+	color: inherit;
+}
+
+nav > h3 {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: x-large;
+	font-weight: 900;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	/* height: 20em; */
+	margin: 85px auto;
+	gap: 18px;
+	border: 1px solid;
+	border-radius: 10px;
+	padding: 20px 13px;
+}
+
+form > button {
+	width: 56px;
+	margin: 0px auto;
+	border: none;
+	background: #00fb36;
+	padding: 6px;
+	border-radius: 7px;
+	color: white;
+}
+
+label {
+	padding: 3px;
+}
+
+input {
+	height: 27px;
+	width: 95%;
+	font-family: inherit;
+	background: #f6c4fa;
+	border-radius: 6px;
+	border: none;
+	padding-left: 7px;
+}
+
+select {
+	width: 110px;
+	height: 30px;
+	border-radius: 6px;
+	border: none;
+	background: #f6c4fa;
+}
+
+textarea {
+	width: 95%;
+	height: 7em;
+	padding: 5px;
+	font-family: inherit;
+	border-radius: 6px;
+	border: none;
+	background: #f6c4fa;
+}
+
+.habit-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background: #c0fbd9;
+	border-radius: 10px;
+	width: 40%;
+	margin: 35px auto;
+	border-bottom: 1px solid black;
+	padding: 10px 7px 0px 10px;
+}
+
+.position {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.position > h3 {
+	font-variant: small-caps;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	color: brown;
+	margin: 0px;
+}
+
+caption {
+	font-size: 13px;
+}
+
+.position p {
+	opacity: 61%;
+	font-size: 13px;
+}
+
+.habit-list > h1 {
+	text-align: center;
+	margin: 100px;
+}
+
+.hr {
+	width: 100%;
+	background: black;
+	height: 1px;
 }
