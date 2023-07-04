@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Error from './components/ErrorPage';
 import Habits from './components/Habits';
 import HabitForm from './components/HabitForm';
+import WeeklyView from './components/WeeklyView';
 
 const AppLayout = () => {
 	return (
@@ -30,6 +31,10 @@ function App() {
 				{
 					path: '/HabitForm',
 					element: <HabitForm />,
+				},
+				{
+					path: '/WeeklyView',
+					element: <WeeklyView />,
 				},
 			],
 		},

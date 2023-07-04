@@ -25,7 +25,12 @@ const Navbar = () => {
 			</Link>
 			<h3>{heading}</h3>
 			<h3>
-				<Link to='/'>Filter</Link>
+				<Link to='/WeeklyView'>Week View</Link>
+			</h3>
+
+			<h3>
+				{' '}
+				<Link to='./'>Home</Link>{' '}
 			</h3>
 		</nav>
 	);

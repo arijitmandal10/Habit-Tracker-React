@@ -18,6 +18,7 @@ nav {
 	justify-content: space-between;
 	background: antiquewhite;
 	border-top: none;
+	margin-bottom: 67px;
 }
 nav > a > button {
 	border: none;
@@ -99,7 +100,7 @@ textarea {
 	background: #c0fbd9;
 	border-radius: 10px;
 	width: 40%;
-	margin: 35px auto;
+	margin: 4px auto;
 	border-bottom: 1px solid black;
 	padding: 10px 7px 0px 10px;
 }
@@ -134,4 +135,19 @@ caption {
 	width: 100%;
 	background: black;
 	height: 1px;
+}
+
+.habit-card select {
+	width: 80px;
+	height: 25px;
+	border-radius: 6px;
+	border: none;
+	background: #f6c4fa;
+}
+.position > button {
+	border: none;
+	background: red;
+	color: white;
+	border-radius: 5px;
+	padding: 6px;
 }
