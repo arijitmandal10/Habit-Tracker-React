@@ -5,7 +5,21 @@ const habitsSlice = createSlice({
 	initialState: [],
 	reducers: {
 		addHabit: (state, action) => {
-			state.push(action.payload);
+			const newHabit = {
+				id: action.payload.id,
+				title: action.payload.title,
+				time: action.payload.time,
+				todayStatus: 'none',
+				lastSixDaysStatus: Array(6).fill('none'), // Initialize the array with 'none' values
+			};
+			state.push(newHabit);
+		},
+		updateHabitStatusForDay: (state, action) => {
+			const { habitId, dayIndex, status } = action.payload;
+			const habit = state.find((habit) => habit.id === habitId);
+			if (habit) {
+				habit.lastSixDaysStatus[dayIndex] = status;
+			}
 		},
 		deleteHabit: (state, action) => {
 			const habitId = action.payload;
@@ -18,15 +32,8 @@ const habitsSlice = createSlice({
 				state[habitIndex].todayStatus = status;
 			}
 		},
-		updateLastSixDaysStatus: (state, action) => {
-			const { habitId, updatedStatus } = action.payload;
-			const habit = state.find((habit) => habit.id === habitId);
-			if (habit) {
-				habit.lastSixDaysStatus = updatedStatus;
-			}
-		},
 	},
 });
 
-export const { addHabit, deleteHabit, updateHabitStatus, updateLastSixDaysStatus } = habitsSlice.actions;
+export const { addHabit, deleteHabit, updateHabitStatus, updateHabitStatusForDay } = habitsSlice.actions;
 export default habitsSlice.reducer;
