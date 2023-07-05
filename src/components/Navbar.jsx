@@ -3,35 +3,21 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
 	const location = useLocation();
-	const [heading, setHeading] = useState('Detail View');
+	const [isWeeklyView, setIsWeeklyView] = useState(false);
 
-	const handleAddButtonClick = () => {
-		setHeading('Add New Habit');
+	const handleToggleView = () => {
+		setIsWeeklyView((prevState) => !prevState);
 	};
-
-	// Check the current location to determine the heading text
-	React.useEffect(() => {
-		if (location.pathname === '/HabitForm') {
-			setHeading('Add New Habit');
-		} else {
-			setHeading('Detail View');
-		}
-	}, [location.pathname]);
 
 	return (
 		<nav>
 			<Link to='/HabitForm'>
-				<button onClick={handleAddButtonClick}>➕</button>
+				<button>+</button>
 			</Link>
-			<h3>{heading}</h3>
-			<h3>
-				<Link to='/WeeklyView'>Week View</Link>
-			</h3>
-
-			<h3>
-				{' '}
-				<Link to='./'>Home</Link>{' '}
-			</h3>
+			<h3>Habit Tracker</h3>
+			<button onClick={handleToggleView}>
+				{isWeeklyView ? <Link to='/'>Change View</Link> : <Link to='/WeeklyView'>Change View</Link>}
+			</button>
 		</nav>
 	);
 };

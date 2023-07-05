@@ -1,78 +1,78 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateHabit } from '../utils/habitsSlice';
+import { format, addDays } from 'date-fns';
+import { updateHabitStatus } from '../utils/habitsSlice'; // Import the action to update todayStatus
 
 const WeeklyView = () => {
 	const habits = useSelector((state) => state.habits);
-	const [selectedDate, setSelectedDate] = useState(new Date());
+	const today = new Date();
+	const lastSixDays = [...Array(6)].map((_, index) => {
+		const date = addDays(today, -6 + index); // Get the previous six days starting from today
+		return {
+			date,
+			dayOfWeek: format(date, 'EEE'),
+		};
+	});
+
 	const dispatch = useDispatch();
 
-	// Find the habit with the given ID
-	const findHabit = (habitId) => {
-		return habits.find((habit) => habit.id === habitId);
+	const handleChange = (habitId, dayIndex, status) => {
+		// Perform your update action here using Redux
+		console.log(`Habit ID: ${habitId}, Day Index: ${dayIndex}, Status: ${status}`);
 	};
 
-	// Handle marking the habit status for a specific day
-	const handleMarkStatus = (habitId, day, updatedStatus) => {
-		const updatedHabit = findHabit(habitId);
-		if (updatedHabit) {
-			updatedHabit.status[day] = updatedStatus;
-			dispatch(updateHabit(updatedHabit));
-		}
-	};
-
-	// Handle changing the status for a specific day
-	const handleStatusChange = (habitId, day, event) => {
-		const updatedStatus = event.target.value;
-		handleMarkStatus(habitId, day, updatedStatus);
-	};
-
-	// Render the habit status for a specific day
-	const renderHabitStatus = (habitId, day) => {
-		const habit = findHabit(habitId);
-		if (habit && habit.status) {
-			const status = habit.status[day];
-			return (
-				<select value={status} onChange={(event) => handleStatusChange(habitId, day, event)}>
-					<option value='None'>None</option>
-					<option value='Done'>Done</option>
-					<option value='Not Done'>Not Done</option>
-				</select>
-			);
-		}
-		return null;
-	};
-
-	// Render the habit component
-	const renderHabit = (habit) => {
-		return (
-			<div className='habit' key={habit.id}>
-				<div className='habit-name'>{habit.title}</div>
-				<div className='habit-status-container'>
-					{renderHabitStatus(habit.id, 0)} {/* Today */}
-					{Array.from(Array(6)).map((_, index) => (
-						<div key={index} className='previous-day-habit-status'>
-							{renderHabitStatus(habit.id, index + 1)} {/* Previous 6 days */}
-						</div>
-					))}
-				</div>
-			</div>
-		);
+	const handleStatusChange = (habitId, status) => {
+		// Dispatch the action to update todayStatus
+		dispatch(updateHabitStatus(habitId, status));
 	};
 
 	return (
 		<div className='weekly-view'>
-			<div className='date-picker'>
-				<label htmlFor='selected-date'>Select Date:</label>
-				<input
-					type='date'
-					id='selected-date'
-					value={selectedDate.toISOString().substr(0, 10)}
-					onChange={(e) => setSelectedDate(new Date(e.target.value))}
-				/>
+			<div className='days-row'>
+				{lastSixDays.map((day) => (
+					<div key={day.date.getTime()} className='day-label'>
+						<span className='fw-600'>{format(day.date, 'MMMM d')}</span>
+						<div className='hr2'></div>
+						<span className='fw-100'>{day.dayOfWeek}</span>
+					</div>
+				))}
+				<div className='day-label'>
+					<span className='fw-600'>{format(today, 'MMMM d')}</span>
+					<div className='hr2'></div>
+					<span className='fw-100'>{format(today, 'EEE')}</span>
+				</div>
 			</div>
-			<div className='habits-list'>
-				{habits && habits.length > 0 ? habits.map((habit) => renderHabit(habit)) : <p>No habits available.</p>}
+			<div className='habit-list'>
+				{habits.map((habit) => (
+					<div key={habit.id} className='habit-card p-w-15'>
+						<div className='habit-info'>
+							<h3>{habit.title}</h3>
+							<p>{habit.time}</p>
+						</div>
+						<div className='hr'></div>
+						<div className='habit-status-row'>
+							{lastSixDays.map((day, index) => (
+								<div key={day.date.getTime()} className='habit-status'>
+									<select className='fit-content' onChange={(e) => handleChange(habit.id, index, e.target.value)}>
+										<option value='none'>none</option>
+										<option value='done'>done</option>
+										<option value='not done'>not done</option>
+									</select>
+								</div>
+							))}
+
+							<select
+								className='fit-content today-select'
+								value={habit.todayStatus}
+								onChange={(e) => handleStatusChange(habit.id, e.target.value)}
+							>
+								<option value={habit.todayStatus}>{habit.todayStatus}</option>
+								<option value='Done'>Done</option>
+								<option value='Not Done'>Not Done</option>
+							</select>
+						</div>
+					</div>
+				))}
 			</div>
 		</div>
 	);
