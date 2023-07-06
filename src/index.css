@@ -225,7 +225,7 @@ caption {
 }
 
 .habit-status-row {
-	gap: 20px;
+	gap: 29px;
 	display: flex;
 	/* justify-content: space-between; */
 	justify-content: center;
@@ -238,15 +238,17 @@ caption {
 }
 
 .fit-content {
-	width: 46px !important;
+	width: 57px !important;
+	margin-left: -17px;
+	padding-left: 6px;
 	font-size: 9px;
 	background: #fbf9f9 !important;
 }
 
 .today-select {
-	margin-right: 16px;
+	margin-right: 0px;
 	/* padding-left: 0px; */
-	margin-left: 23px;
+	margin-left: -5px;
 }
 
 .hr {
