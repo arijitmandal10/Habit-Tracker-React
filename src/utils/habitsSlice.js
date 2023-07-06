@@ -9,6 +9,7 @@ const habitsSlice = createSlice({
 				id: action.payload.id,
 				title: action.payload.title,
 				time: action.payload.time,
+				description: action.payload.description,
 				frequency: action.payload.frequency,
 				todayStatus: 'none',
 				lastSixDaysStatus: Array(6).fill('none'), // Initialize the array with 'none' values
