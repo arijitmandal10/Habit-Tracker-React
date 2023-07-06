@@ -63,6 +63,15 @@ The project follows the following folder structure:
 )
 *Add Habit form of Habit Tracker, allowing users to add a new habit.*
 
+
+## Deployed Link
+
+The Habit Tracker web application is deployed and can be accessed using the following link:
+
+[https://habit-tracker-arijit.netlify.app/](https://habit-tracker-arijit.netlify.app/)
+
+
+
 ## Getting Started
 
 To run the project locally, follow these steps:
