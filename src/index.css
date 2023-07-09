@@ -341,3 +341,95 @@ caption {
 	color: red;
 	opacity: 0.5;
 }
+
+@media (max-width: 768px) {
+	.Login > Form {
+		/* margin: auto; */
+		height: -moz-fit-content;
+		/* height: fit-content; */
+		/* padding: 20px; */
+		width: 80%;
+	}
+
+	.Login > form > div > button {
+		border: none;
+		height: 35px;
+		border-radius: 10px;
+		width: 26%;
+		background: lawngreen;
+		font-size: large;
+	}
+	nav > h3 {
+		/* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+		/* font-size: larger; */
+		/* margin-inline: 30px; */
+		/* font-weight: 900; */
+		/* margin-right: -14%; */
+		display: none;
+	}
+
+	form {
+		/* display: flex; */
+		/* flex-direction: column; */
+		width: 80%;
+		height: 19em;
+		/* margin: 85px auto; */
+		/* gap: 18px; */
+		/* border: 1px solid; */
+		/* border-radius: 10px; */
+		/* padding: 20px 13px; */
+		/* background: aliceblue; */
+		/* box-shadow: 1px 1px 10px black; */
+	}
+	.habit-card {
+		width: 94%;
+		padding: 2px 8px 4px 1px;
+	}
+	.day-label {
+		padding-inline: 6px;
+	}
+	.days-row {
+		width: 95%;
+		height: 5em;
+	}
+	.p-w-15 {
+		padding: 6px;
+		/* width: 45%; */
+		margin: auto;
+	}
+	.habit-status-row {
+		gap: 0px;
+		display: flex;
+		/* justify-content: space-between; */
+		justify-content: center;
+		margin-top: 5px;
+	}
+	.fit-content {
+		width: 42px !important;
+		margin-left: -17px;
+		/* padding-left: 6px; */
+		font-size: 7px;
+		background: #fbf9f9 !important;
+	}
+	.habit-list {
+		gap: 0px;
+	}
+	.habit-list div {
+		margin-bottom: 10px;
+	}
+	.habit-status {
+		border-right: none;
+		padding-inline: 15px;
+	}
+	.habit-status-row > select {
+		margin-right: -13px;
+		margin-left: -6px;
+	}
+
+	.habit-list > div > label > select {
+		margin: 0px;
+		width: 68px;
+		font-size: x-small;
+		margin-left: 10px !important;
+	}
+}
