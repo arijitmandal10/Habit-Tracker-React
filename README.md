@@ -4,6 +4,7 @@ Habit Tracker is a web application that allows users to track their habits on a 
 
 ## Features
 
+- Users will need to register an account and log in using their credentials 
 - Add multiple habits to track, such as reading a book or going to the gym.
 - Track each habit every day and choose from three statuses: Done, Not Done, or None.
 - View all current habits in a user-friendly interface.
@@ -25,10 +26,13 @@ The project follows the following folder structure:
     - `WeeklyHabits.jsx`: Renders the weekly view of habits.
     - `HabitForm.jsx`: Renders a form to add new habits.
     - `Navbar.jsx`: Renders the navigation bar.
+    - `Login.jsx`: Renders the Login Page.
+    - `SignUp.jsx`: Renders the SignUp Page.
   - `utils`: Contains utility files used in the application.
     - `store.js`: Manages the Redux store configuration.
     - `habitSlice.js`: Contains Redux slice for managing habits.
 - `App.js`: The root component of the application.
+- `firebase.js`: initialises firebase to the app.
 - `index.css`: Contains global CSS styles.
 - `index.js`: The entry point of the application.
 - `package-lock.json`: Auto-generated file for package dependencies.
@@ -50,6 +54,8 @@ The project follows the following folder structure:
 - [react-router-dom](https://reactrouter.com/web/guides/quick-start): DOM bindings for React Router.
 
 ## Screenshots
+![Screenshot (32)](https://github.com/arijitmandal10/Habit-Tracker-React/assets/114182784/64501ff0-794c-4671-a102-41cafe7a3836)
+
 
 ![Habit Tracker Home](![habit-tracker-2](https://github.com/arijitmandal10/Habit-Tracker-React/assets/114182784/83ac6648-c9e4-4e0f-ad22-617c5270373d)
 )
