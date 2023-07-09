@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = () => {
-	const location = useLocation();
+	const navigate = useNavigate();
 	const [isWeeklyView, setIsWeeklyView] = useState(false);
 
 	const handleToggleView = () => {
@@ -15,9 +15,14 @@ const Navbar = () => {
 				<button>+</button>
 			</Link>
 			<h3>Habit Tracker</h3>
-			<button onClick={handleToggleView}>
-				{isWeeklyView ? <Link to='/'>Change View</Link> : <Link to='/WeeklyView'>Change View</Link>}
-			</button>
+
+			<div>
+				{' '}
+				<button onClick={handleToggleView}>
+					{isWeeklyView ? <Link to='/'>Change View</Link> : <Link to='/WeeklyView'>Change View</Link>}
+				</button>
+				<Link to='/Login'>Logout</Link>
+			</div>
 		</nav>
 	);
 };

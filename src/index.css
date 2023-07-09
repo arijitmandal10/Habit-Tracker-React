@@ -4,7 +4,7 @@ body {
 		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background: #acf3f7;
+	background: #ffaeae6e;
 }
 
 code {
@@ -12,14 +12,17 @@ code {
 }
 
 nav {
-	border: 1px solid;
-	padding: 3px 30px;
+	/* border: 1px solid; */
+	padding: 0px 10px;
 	margin: 0px;
 	display: flex;
 	justify-content: space-between;
+	/* gap: 38%; */
 	background: antiquewhite;
-	border-top: none;
+	/* border-top: none; */
+	box-shadow: 1px 1px 14px black;
 	margin-bottom: 67px;
+	width: -webkit-fill-available;
 }
 nav > a > button {
 	border: none;
@@ -44,21 +47,34 @@ nav > h3 {
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-size: xx-large;
 	font-weight: 900;
-	margin-left: 70px;
+	margin-right: -14%;
 }
 
-nav > button {
+nav > div > button {
 	height: fit-content;
 	/* display: flex; */
 	margin: auto 0px;
 	background: none;
 	border: none;
-	font-size: x-large;
+	font-size: large;
 	font-family: auto;
 }
 
-nav > button:hover {
+nav > div > button:hover {
 	color: red;
+}
+
+nav > div {
+	display: flex;
+	gap: 80px;
+}
+nav > div > a {
+	align-self: center;
+	background: red;
+	color: white;
+	padding: 5px;
+	font-size: large;
+	border-radius: 10px;
 }
 form {
 	display: flex;
@@ -276,4 +292,52 @@ caption {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+}
+
+/* Login */
+.Login {
+	display: flex;
+	flex-direction: column;
+	margin-top: 5%;
+	gap: 15px;
+}
+.Login > Form {
+	margin: auto;
+	height: fit-content;
+	padding: 20px;
+}
+.Login input {
+	height: 3em;
+}
+
+.Login > span {
+	text-align: center;
+	color: red;
+}
+
+.Login > form > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.Login > form > div > button {
+	border: none;
+	height: 35px;
+	border-radius: 10px;
+	width: 18%;
+	background: lawngreen;
+	font-size: large;
+}
+.Login > form > div > button:hover {
+	box-shadow: 1px 1px 9px black;
+}
+
+.Login > form > div > a {
+	align-self: center;
+	text-decoration: auto;
+}
+.Login > form > p {
+	margin: 0px 0px;
+	color: red;
+	opacity: 0.5;
 }
