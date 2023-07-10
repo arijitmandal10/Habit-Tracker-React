@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { format, addDays } from 'date-fns';
 import { updateHabits } from '../utils/habitsSlice';
 import { db } from '../firebase';
-import { collection, doc, getDocs, updateDoc, onSnapshot } from 'firebase/firestore';
+import { collection, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 
 const WeeklyView = () => {
 	const dispatch = useDispatch();
@@ -17,23 +17,6 @@ const WeeklyView = () => {
 			dayOfWeek: format(date, 'EEE'),
 		};
 	});
-	useEffect(() => {
-		const fetchHabits = async () => {
-			try {
-				const habitsCollection = collection(db, 'habits');
-				const habitsSnapshot = await getDocs(habitsCollection);
-				const habitsData = habitsSnapshot.docs.map((doc) => ({
-					id: doc.id,
-					...doc.data(),
-				}));
-				dispatch(updateHabits(habitsData));
-			} catch (error) {
-				console.error('Error fetching habits from Firestore:', error);
-			}
-		};
-
-		fetchHabits();
-	}, [dispatch]);
 
 	useEffect(() => {
 		const unsubscribe = onSnapshot(collection(db, 'habits'), (snapshot) => {
@@ -86,39 +69,41 @@ const WeeklyView = () => {
 				</div>
 			</div>
 			<div className='habit-list'>
-				{habits.map((habit) => (
-					<div key={habit.id} className='habit-card p-w-15'>
-						<div className='habit-info'>
-							<h3>{habit.title}</h3>
-							<p>{habit.time}</p>
+				{habits &&
+					habits.length > 0 &&
+					habits.map((habit) => (
+						<div key={habit.id} className='habit-card p-w-15'>
+							<div className='habit-info'>
+								<h3>{habit.title}</h3>
+								<p>{habit.time}</p>
+							</div>
+							<div className='hr'></div>
+							<div className='habit-status-row'>
+								{lastSixDays.map((day, index) => (
+									<div key={day.date.getTime()} className='habit-status'>
+										<select
+											className='fit-content'
+											value={habit.lastSixDaysStatus[index]}
+											onChange={(e) => handleChange(habit.id, index, e.target.value)}
+										>
+											<option value='none'>none</option>
+											<option value='done'>done</option>
+											<option value='not done'>not done</option>
+										</select>
+									</div>
+								))}
+								<select
+									className='fit-content today-select'
+									value={habit.todayStatus}
+									onChange={(e) => handleStatusChange(habit.id, e.target.value)}
+								>
+									<option value={habit.todayStatus}>{habit.todayStatus}</option>
+									<option value='Done'>Done</option>
+									<option value='Not Done'>Not Done</option>
+								</select>
+							</div>
 						</div>
-						<div className='hr'></div>
-						<div className='habit-status-row'>
-							{lastSixDays.map((day, index) => (
-								<div key={day.date.getTime()} className='habit-status'>
-									<select
-										className='fit-content'
-										value={habit.lastSixDaysStatus[index]}
-										onChange={(e) => handleChange(habit.id, index, e.target.value)}
-									>
-										<option value='none'>none</option>
-										<option value='done'>done</option>
-										<option value='not done'>not done</option>
-									</select>
-								</div>
-							))}
-							<select
-								className='fit-content today-select'
-								value={habit.todayStatus}
-								onChange={(e) => handleStatusChange(habit.id, e.target.value)}
-							>
-								<option value={habit.todayStatus}>{habit.todayStatus}</option>
-								<option value='Done'>Done</option>
-								<option value='Not Done'>Not Done</option>
-							</select>
-						</div>
-					</div>
-				))}
+					))}
 			</div>
 		</div>
 	);

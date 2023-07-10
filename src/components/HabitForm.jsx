@@ -6,7 +6,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
 import { db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -32,6 +31,7 @@ const HabitForm = () => {
 			description,
 			time: formattedTime,
 			todayStatus,
+			lastSixDaysStatus: Array(6).fill('none'),
 		};
 
 		try {
