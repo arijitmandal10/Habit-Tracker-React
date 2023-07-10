@@ -7,6 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
+import { db } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 const HabitForm = () => {
 	const dispatch = useDispatch();
@@ -18,7 +20,7 @@ const HabitForm = () => {
 	const [time, setTime] = useState(new Date());
 	const [todayStatus, setTodayStatus] = useState('None');
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		const formattedTime = convertTo24HourFormat(time);
@@ -32,7 +34,16 @@ const HabitForm = () => {
 			todayStatus,
 		};
 
-		dispatch(addHabit(newHabit));
+		try {
+			// Add the habit to the Redux store
+			dispatch(addHabit(newHabit));
+
+			// Add the habit to Firestore
+			await setDoc(doc(db, 'habits', newHabit.id), newHabit);
+			console.log('Habit added to Firestore');
+		} catch (error) {
+			console.error('Error adding habit to Firestore:', error);
+		}
 
 		setTitle('');
 		setFrequency('daily');
@@ -69,14 +80,6 @@ const HabitForm = () => {
 					dateFormat='h:mm aa'
 				/>
 			</label>
-			{/* <label>
-				Status:
-				<select value={todayStatus} onChange={(e) => setTodayStatus(e.target.value)}>
-					<option value='None'>None</option>
-					<option value='Done'>Done</option>
-					<option value='Not Done'>Not Done</option>
-				</select>
-			</label> */}
 			<button type='submit'>Submit</button>
 		</form>
 	);

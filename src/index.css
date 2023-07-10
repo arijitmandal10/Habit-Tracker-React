@@ -72,9 +72,18 @@ nav > div > a {
 	align-self: center;
 	background: red;
 	color: white;
-	padding: 5px;
 	font-size: large;
 	border-radius: 10px;
+}
+
+nav > div > a:active {
+	box-shadow: 1px 1px 8px black;
+}
+nav > div > a > button {
+	background: none;
+	border: none;
+	color: white;
+	padding-bottom: 5px;
 }
 form {
 	display: flex;
@@ -330,6 +339,9 @@ caption {
 }
 .Login > form > div > button:hover {
 	box-shadow: 1px 1px 9px black;
+}
+.Login > form > div > button:active {
+	background: #eaf408;
 }
 
 .Login > form > div > a {

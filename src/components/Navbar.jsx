@@ -9,6 +9,11 @@ const Navbar = () => {
 		setIsWeeklyView((prevState) => !prevState);
 	};
 
+	const handleLogout = () => {
+		// Remove the isLoggedIn flag from local storage
+		localStorage.removeItem('isLoggedIn');
+	};
+
 	return (
 		<nav>
 			<Link to='/HabitForm'>
@@ -21,7 +26,10 @@ const Navbar = () => {
 				<button onClick={handleToggleView}>
 					{isWeeklyView ? <Link to='/'>Change View</Link> : <Link to='/WeeklyView'>Change View</Link>}
 				</button>
-				<Link to='/Login'>Logout</Link>
+				<Link to='/Login'>
+					{' '}
+					<button onClick={handleLogout}>Logout</button>
+				</Link>
 			</div>
 		</nav>
 	);

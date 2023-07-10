@@ -9,6 +9,7 @@ import WeeklyView from './components/WeeklyView';
 import Login from './components/Login';
 import { useSelector } from 'react-redux';
 import SignUp from './components/SignUp';
+import { ToastContainer } from 'react-toastify';
 
 const AppLayout = () => {
 	const currentUser = useSelector((state) => state.auth.currentUser);
@@ -18,6 +19,7 @@ const AppLayout = () => {
 	return (
 		<RequireAuth>
 			<Navbar />
+			<ToastContainer />
 			<Outlet />
 		</RequireAuth>
 	);
