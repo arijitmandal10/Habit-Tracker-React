@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const [isWeeklyView, setIsWeeklyView] = useState(false);
 
 	const handleToggleView = () => {
