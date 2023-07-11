@@ -47,6 +47,7 @@ The project follows the following folder structure:
 ## Firebase Services Used
 
 -Firebase Authentication: Provides user authentication and authorization capabilities for the application. Used for user login and signup functionality.
+
 -Cloud Firestore: A flexible and scalable NoSQL cloud database provided by Firebase. Used for storing and retrieving data related to habits in the application.
 
 ## Libraries and Hooks
